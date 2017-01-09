@@ -160,7 +160,9 @@ module SupplejackApi::Concerns::UserSet
 
       primary_fragment = record.primary_fragment
 
+      Rails.logger.info '[StoreUserActivityWorker]: update_record before'
       record.save!
+      Rails.logger.info '[StoreUserActivityWorker]: update_record after'
     end
 
     def delete_record
