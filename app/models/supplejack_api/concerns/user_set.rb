@@ -100,9 +100,6 @@ module SupplejackApi::Concerns::UserSet
       update_featured_set(new_attributes, user)
 
       self.attributes = new_attributes
-      Rails.logger.warn("==Attr: #{self.attributes.inspect}")
-      Rails.logger.warn("==Valid: #{self.valid?}")
-      Rails.logger.warn("==Valid: #{self.errors.messages}")
 
       save
     end
@@ -110,6 +107,9 @@ module SupplejackApi::Concerns::UserSet
     def remove_nil_values
       self.description = '' if description.nil?
       self.approved = false if approved.nil?
+      Rails.logger.warn("==Attr: #{self.attributes.inspect}")
+      Rails.logger.warn("==Valid: #{self.valid?}")
+      Rails.logger.warn("==Valid: #{self.errors.messages}")
     end
 
     def update_featured_set(new_attributes, user)
